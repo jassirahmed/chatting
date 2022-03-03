@@ -18,8 +18,8 @@ import styles from "../../styles/Home.module.scss"
 export default function EndModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
-        <div>
-            <Button onClick={onOpen} className={styles.endses} w={"100%"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
+        <button bg="transparent">
+            <Button py="5px" px="20px" onClick={onOpen} py="6px" px="12px" className={styles.endses} w={"150px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
                 End Session
             </Button>
 
@@ -42,6 +42,6 @@ export default function EndModal() {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-        </div>
+        </button>
     )
 }

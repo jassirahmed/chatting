@@ -26,7 +26,7 @@ function CreateSession(params) {
 
   return (
     <Box className={styles.createsessionpage}>
-      <Flex pt="120px">
+      <Flex pt="120px" className={styles.hero_sec}>
         <Box w="60%" bg={"#fff"} className={styles.textbox} p="15px">
           <FormControl p="4" textAlign="right">
             <Textarea
@@ -53,7 +53,7 @@ function CreateSession(params) {
 
           </FormControl>
         </Box>
-        <Box w="40%" p={70} pt="0px">
+        <Box w="40%" p={70} className={styles.btn_box} pt="0px">
 
           <Button
             type="button"

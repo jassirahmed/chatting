@@ -79,10 +79,12 @@
   text-decoration: none;
   background-color: transparent;
 }
-.sessionHead{
+
+.left_container {
   display: flex;
   flex-direction: column;
-  .rotateIcon{
+
+  .rotateIcon {
     transform: rotate(31deg);
     background: #2b3954;
     color: white;
@@ -91,7 +93,8 @@
     width: 30px;
     padding: 5px;
   }
-  .textBox{
+
+  .textBox {
     height: 100%;
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -103,6 +106,7 @@
     border-radius: 12px;
   }
 }
+
 .dark_row {
   .header {
     background-color: #3a3a3a !important;
@@ -111,7 +115,7 @@
   .tar {
     background-color: #3a3a3a !important;
 
-    .version{
+    .version {
       color: #c1c1c1;
     }
   }
@@ -138,7 +142,7 @@
           background-color: #f2f2f2 !important;
         }
 
-        
+
       }
 
       .join_btn {
@@ -150,101 +154,256 @@
         background-color: #f2f2f2 !important;
         transform: scale(1.1);
       }
-      
+
     }
   }
 }
-.msg_input{
+
+.msg_input {
   border-radius: 5px;
 }
-.msg_text_input{
+
+.msg_text_input {
   border-bottom-left-radius: 0px !important;
   border-top-left-radius: 0px !important;
   border: none !important;
 }
-.msg_btn_icon{
+
+.msg_btn_icon {
   border-bottom-left-radius: 5px !important;
   border-top-left-radius: 5px !important;
-  &:hover{
+
+  &:hover {
     background-color: #3cad50 !important;
     color: #fff !important;
   }
 }
-.message_sentbtn:hover{
+
+.message_sentbtn:hover {
   background-color: transparent !important;
 }
-.token_preview{
+
+.token_preview {
   box-shadow: 1px 3px 7px 0 rgb(0 0 0 / 16%);
+
+  .copybtn:hover {
+    background-color: #2b3954;
+    color: #fff;
+    transition: all 0.5s;
+  }
 }
-.endses{
+
+.endses {
   box-shadow: 1px 3px 3px 1px rgb(0 0 0 / 13%);
   border-color: #de4d5b !important;
-  &:hover{
+  padding: 0 25px;
+
+  &:hover {
     color: #fff !important;
     background-color: #de4d5b !important;
     border-color: #dc3545 !important;
   }
 }
-.leaveses{
+
+.leaveses {
   box-shadow: 1px 3px 3px 1px rgb(0 0 0 / 13%);
-  &:hover{
+  border-color: #de4d5b !important;
+  padding: 0 25px;
+
+  &:hover {
     color: #fff !important;
     background-color: #de4d5b !important;
     border-color: #dc3545 !important;
   }
 }
-.mode{
-  color:#929292;
-  i{
+
+.mode {
+  color: #929292;
+
+  i {
     color: #3cad50;
     margin-left: 5px;
-    animation: blinker 1.5s cubic-bezier(.5,0,1,1) infinite alternate;
+    animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;
   }
 }
+
 @keyframes blinker {
-  from { opacity: 1.0; }
-  to { opacity: 0.0; }
+  from {
+    opacity: 1.0;
+  }
+
+  to {
+    opacity: 0.0;
+  }
 }
-.dark_row_2{
-  background-color: rgba(29,29,29,.98);
-  .sessionHead{
+
+.Header {
+  display: none;
+
+  .share {
+    button {
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.dark_row_2 {
+  background-color: rgba(29, 29, 29, .98);
+
+  .sessionHead {
     background-color: #3a3a3a;
-    .rotateIcon{
-      background-color: hsla(0,0%,100%,.72);
+
+    .rotateIcon {
+      background-color: hsla(0, 0%, 100%, .72);
       color: #2d2929;
     }
-    .textBox{
+
+    .textBox {
       background-color: #212121;
     }
-    .msg_input{
-      background-color: hsla(0,0%,100%,.72);
-      .msg_btn_icon{
-        color: hsla(0,0%,76.5%,.79);
+
+    .msg_input {
+      background-color: hsla(0, 0%, 100%, .72);
+
+      .msg_btn_icon {
+        color: hsla(0, 0%, 76.5%, .79);
         background-color: #1d1d1d;
       }
-      .msg_text_input{
+
+      .msg_text_input {
         background-color: #1d1d1d;
         color: #d5d1cb;
       }
-      .message_sentbtn{
+
+      .message_sentbtn {
         color: #2d2929;
         background-color: #c8c8c8;
       }
     }
   }
-  .token_preview{
+
+  .token_preview {
     background-color: #3a3a3a;
     box-shadow: 1px 3px 7px 0 rgb(0 0 0 / 42%);
-    .copybtn{
+
+    .copybtn {
       background-color: #f2f2f2;
       color: #2b3954;
     }
-    p{
-      color: hsla(0,0%,100%,.72);
+
+    p {
+      color: hsla(0, 0%, 100%, .72);
     }
-    .link_area{
-      background-color: hsla(0,0%,100%,.72);
+
+    .link_area {
+      background-color: hsla(0, 0%, 100%, .72);
       color: #2b3954;
     }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .hero_sec {
+    display: block !important;
+
+    .textbox {
+      width: 100%;
+    }
+
+    .btn_box {
+      width: 100%;
+      padding-top: 70px;
+    }
+  }
+
+  .share_modal_header {
+    background-color: #2b3954 !important;
+  }
+
+  .token_session {
+    position: relative;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 3px 7px 0 rgb(0 0 0 / 16%);
+    margin: 1rem 0;
+
+    Button {
+      background-color: #2b3954;
+      color: #fff;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+  }
+
+  .link_session {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    padding: 3px 15px 15px;
+    border-radius: 10px;
+    box-shadow: 1px 3px 7px 0 rgb(0 0 0 / 16%);
+
+    p {
+      margin: 5px;
+
+      i {
+        font-size: 13px;
+        color: #a2a2a2;
+        position: absolute;
+        right: 27%;
+        top: 12%;
+      }
+    }
+
+    span {
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 16px;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    Button {
+      background-color: #2b3954;
+      color: #fff;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .white_Row {
+    .left_container {
+      width: 100%;
+    }
+
+    .right_container {
+      display: none;
+    }
+  }
+
+  .Header {
+    display: block;
+  }
+
+  .close:hover {
+    color: #000;
+    opacity: 75%;
+  }
+
+  .done:hover {
+    background-color: #111f38 !important;
+    color: #fff !important;
+    box-shadow: 1px 3px 7px 0 rgb(0 0 0 / 16%) !important;
+  }
+
+  .dark_row_2 {
+    background-color: black;
   }
 }

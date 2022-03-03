@@ -8,6 +8,7 @@ import { useToast } from '@chakra-ui/react';
 import { useState } from 'react';
 import EndModal from '../Components/Modal/EndModal';
 import LeaveModal from '../Components/Modal/LeaveModal';
+import Header from '../Components/Page/MediaHeader';
 
 
 
@@ -24,13 +25,13 @@ export default function ChattingSession() {
 
   const handleChange = () => {
     setIsChecked(!isChecked);
-
   }
 
   return (
     <Box h="100%" className={sessionContainer}>
+      <Header />
       <Flex p={2} h="100%">
-        <Box p={3} pt={2} bg="white" w="66.66%" rounded='md' className={style.sessionHead}>
+        <Box p={3} pt={2} bg="white" w="66.66%" rounded='md' className={style.left_container}>
           <Flex pb={2} px="10px">
             <Box>
               <Stack direction='row'>
@@ -59,7 +60,7 @@ export default function ChattingSession() {
             </FormControl >
           </Flex>
         </Box>
-        <Box w="33.33%" textAlign={"center"} p="10px">
+        <Box w="33.33%" className={style.right_container} textAlign={"center"} p="10px">
           <Box pos={"relative"} className={style.token_preview} w="55%" m={"auto"} textAlign={"center"} p="18px" bg={"#fff"} borderRadius={"5px"}>
             <Box textAlign={"right"} pos="absolute" right="9px" top="9px">
               <IconButton

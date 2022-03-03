@@ -16,15 +16,15 @@ import {
 export default function LeaveModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
-        <div>
-            <Button display="none" mt={5} onClick={onOpen} className={styles.endses} w={"100%"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
+        <buttton bg="transparent">
+            <Button display="none" py="5px" mt={5} onClick={onOpen} className={styles.endses} w={"150px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
                 Leave Session
             </Button>
             <Modal size='lg' isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader color='#fff' bg='#dc3545'>Confirmation</ModalHeader>
-                    <ModalCloseButton color='#fff' border='none' boxShadow='none' />
+                    <ModalCloseButton _focus="none" color='#fff' border='none' boxShadow='none' />
                     <ModalBody textAlign='center' fontSize='18px'>
                         Do you want to leave this session.
                     </ModalBody>
@@ -39,6 +39,6 @@ export default function LeaveModal() {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-        </div>
+        </buttton>
     )
 }
