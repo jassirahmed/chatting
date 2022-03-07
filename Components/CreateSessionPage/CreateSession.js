@@ -42,7 +42,13 @@ export default function CreateSession() {
     })
 
   }
-  let textLength = setInputValue.length + 1;
+  const changeLength = () => {
+    let textLength = document.getElementById("text").value;
+    var count = textLength.length + 1;
+
+    document.getElementById("count").innerHTML = count;
+    console.log(count)
+  }
 
 
   console.log(textLength)
@@ -80,6 +86,7 @@ export default function CreateSession() {
               id="text"
               required
               h="300px"
+              onKeyDown={changeLength}
               onChange={changeHandler}
               value={setInputValue.addTextInput}
               className={styles.sessionText}
@@ -87,7 +94,7 @@ export default function CreateSession() {
               maxLength="5000"
             />
             <Text fontSize="lg" color="#9e9e9e" >
-              {textLength}/5000
+              <span id="count">0</span>/5000
             </Text>
             <Button
               px="20px"
