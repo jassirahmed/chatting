@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "../../styles/Home.module.scss";
 import Link from 'next/link'
+import { useState } from "react";
+import { useEffect } from "react";
 import {
   Box,
   Flex,
   Textarea,
   FormControl,
+  FormHelperText,
+  FormErrorMessage,
   Text,
   Button,
   Input,
@@ -20,41 +24,87 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useRouter } from 'next/router'
+import { useCallback } from 'react';
+import { useNavigate } from "react-router-dom";
 
-function CreateSession(params) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+
+
+export default function CreateSession() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [addTextInput, setInputValue] = useState('');
+
+  const changeHandler = (e) => {
+    setInputValue({
+      [e.target]: e.target.value,
+    })
+
+  }
+  let textLength = setInputValue.length + 1;
+
+
+  console.log(textLength)
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault()
+    var today = new Date();
+    var date =
+      today.getFullYear() + '' + (today.getMonth() + 1) + '' + today.getDate();
+    var time =
+      today.getHours() +
+      '' +
+      today.getMinutes() +
+      '' +
+      today.getSeconds() +
+      '' +
+      today.getMilliseconds();
+    var dateTime = date + time;
+    let uniqueID = dateTime + Math.floor(Math.random() * 1000);
+    let data = {
+      type: 'createSession',
+      message: addTextInput,
+      uniqueID: uniqueID,
+    }
+    console.log(data)
+  }
+
 
   return (
-    <Box className={styles.createsessionpage}>
+    <Box className={styles.createsessionpage} >
       <Flex pt="120px" className={styles.hero_sec}>
-        <Box w="60%" bg={"#fff"} className={styles.textbox} p="15px">
-          <FormControl p="4" textAlign="right">
+        <Box w="60%" bg={"#fff"} className={styles.textbox} p="15px" >
+          <FormControl as="form" p="4" textAlign="right" onSubmit={onSubmitHandler} >
             <Textarea
+              id="text"
+              required
               h="300px"
+              onChange={changeHandler}
+              value={setInputValue.addTextInput}
               className={styles.sessionText}
               placeholder="Paste Your Code Here"
+              maxLength="5000"
             />
-            <Text fontSize="lg" color="#9e9e9e">
-              0/5000
+            <Text fontSize="lg" color="#9e9e9e" >
+              {textLength}/5000
             </Text>
-            <Link href="/ChattingSession">
-              <Button
-                px="20px"
-                py="5px"
-                bg={"#2b3954"}
-                color="#fff"
-                fontSize="20px"
-                type="submit"
-                className={styles.submit_btn}
-              >
-                Create Session
-              </Button>
-            </Link>
+            <Button
+              px="20px"
+              py="5px"
+              bg={"#2b3954"}
+              color="#fff"
+              fontSize="20px"
+              type="submit"
+              className={styles.submit_btn}
+            >
 
-          </FormControl>
+              Create Session
+            </Button>
+
+          </FormControl >
         </Box>
         <Box w="40%" p={70} className={styles.btn_box} pt="0px">
-
           <Button
             type="button"
             bg={"#2b3954"}
@@ -84,8 +134,7 @@ function CreateSession(params) {
             </ModalContent>
           </Modal>
         </Box>
-      </Flex>
-    </Box>
+      </Flex >
+    </Box >
   );
 }
-export default CreateSession;

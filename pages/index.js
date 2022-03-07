@@ -5,15 +5,24 @@ import { Flex, Link, Box, Button, Icon, Text, Spacer, Heading } from "@chakra-ui
 import ilmx from "../Images/ilmx.png";
 import CreateSession from "../Components/CreateSessionPage/CreateSession";
 import styles from "../styles/Home.module.scss";
+import { useEffect } from "react";
+import handler from "./api/hello";
 
 
 export default function Home() {
   const [container, setContainer] = useState(false);
   const contentContainername = container ? `${styles["dark_row"]} ${styles.container}` : styles.container;
+  const [repos, setRepos] = useState([]);
 
 
   return (
+
     <div className={contentContainername}>
+      <Box>
+        {repos.map(repo =>
+          <div key={repo.id}>{repo.name}
+          </div>)}
+      </Box>
       <Box as="header" className={styles.header} bg={"#f2f2f2"}>
         <Flex alignItems="center" px="18" py={2.5}>
           <Box w={100}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '@chakra-ui/react'
+import { Button, Box } from '@chakra-ui/react'
 import styles from "../../styles/Home.module.scss"
 import { useDisclosure } from '@chakra-ui/react'
 import Link from 'next/link'
@@ -16,7 +16,7 @@ import {
 export default function LeaveModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
-        <buttton bg="transparent">
+        <Box bg="transparent">
             <Button display="none" py="5px" mt={5} onClick={onOpen} className={styles.endses} w={"150px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
                 Leave Session
             </Button>
@@ -39,6 +39,6 @@ export default function LeaveModal() {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-        </buttton>
+        </Box>
     )
 }

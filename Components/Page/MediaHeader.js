@@ -31,9 +31,9 @@ export default function Header() {
                         <ModalContent background="rgb(242, 242, 242)" border="5px">
                             <ModalHeader p="10px" className={style.share_modal_header} borderTopRightRadius="5px" borderTopLeftRadius="5px" color='#fff' bg='#dc3545'>Session Sharing Options</ModalHeader>
                             <ModalCloseButton color='#fff' border='none' _focus={"none"} boxShadow='none' className={style.close} />
-                            <ModalBody fontSize="18px" textAlign='center' fontSize='18px' px="30px">
+                            <ModalBody fontSize="18px" textAlign="center" px="30px">
                                 <Box className={style.token_session} >
-                                    <Text>Share by Token No -<Box as="b">1234</Box>
+                                    <Box>Share by Token No -<Box as="b">1234</Box>
                                         <IconButton
                                             w={"30px"}
                                             h="30px"
@@ -55,12 +55,12 @@ export default function Header() {
                                                     ),
                                                 }) && (navigator.clipboard.writeText(token))
                                             } />
-                                    </Text>
+                                    </Box>
                                 </Box>
                                 <Box className={style.link_session}>
-                                    <Text>
+                                    <Box>
                                         Share By Link <QuestionOutlineIcon />
-                                    </Text>
+                                    </Box>
                                     <Box as="span" bg="#2b3954" color="#fff" cursor="pointer"
                                         onClick={() =>
                                             toast({

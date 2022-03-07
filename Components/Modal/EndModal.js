@@ -10,7 +10,7 @@ import {
     ModalCloseButton,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
+import { Button, Box } from '@chakra-ui/react'
 import styles from "../../styles/Home.module.scss"
 
 
@@ -18,8 +18,8 @@ import styles from "../../styles/Home.module.scss"
 export default function EndModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
-        <button bg="transparent">
-            <Button py="5px" px="20px" onClick={onOpen} py="6px" px="12px" className={styles.endses} w={"150px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
+        <Box bg="transparent">
+            <Button py="5px" px="20px" onClick={onOpen} className={styles.endses} w={"150px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
                 End Session
             </Button>
 
@@ -42,6 +42,6 @@ export default function EndModal() {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-        </button>
+        </Box>
     )
 }

@@ -26,7 +26,6 @@ export default function ChattingSession() {
   const handleChange = () => {
     setIsChecked(!isChecked);
   }
-
   return (
     <Box h="100%" className={sessionContainer}>
       <Header />
@@ -36,9 +35,9 @@ export default function ChattingSession() {
             <Box>
               <Stack direction='row'>
                 <Switch colorScheme='blackAlpha' size='lg' transition={"ease-in-out"} checked={isChecked} onChange={handleChange} />
-                <Text>
+                <Box>
                   {isChecked ? checkedText : unheckedText}
-                </Text>
+                </Box>
               </Stack>
             </Box>
             <Spacer />
@@ -54,7 +53,7 @@ export default function ChattingSession() {
               <Input className={style.msg_text_input} bg={"#fff"} placeholder="Enter Message Here" size='lg' />
               <Button h="48px" bg={"transperent"} color="#fff" borderRadius={0} type="submit" className={style.message_sentbtn}>
                 <Box><Box as='span'><i className="fa-solid fa-paper-plane"></i></Box>
-                  <Text>Send</Text>
+                  <Box>Send</Box>
                 </Box>
               </Button>
             </FormControl >
@@ -83,10 +82,10 @@ export default function ChattingSession() {
                   }) && (navigator.clipboard.writeText(token))
                 } />
             </Box>
-            <Text className={style.token} fontWeight="400" fontSize={"20px"} mt="10px" color="#2b3954">Tokken No</Text>
-            <Text className={style.token_num} fontSize="35px" color={"#2b3954"}>
+            <Box className={style.token} fontWeight="400" fontSize={"20px"} mt="10px" color="#2b3954">Tokken No</Box>
+            <Box className={style.token_num} fontSize="35px" color={"#2b3954"}>
               <Box as='b' id='token'>1234</Box>
-            </Text>
+            </Box>
             <Box>
               <Button className={style.light_mode_btn} bg={"#f2f2f2"} color="rgba(41,39,39,.89)" fontSize="27px" px="13px" py="30px"
                 onClick={() => setDark(!dark)}>
@@ -96,7 +95,7 @@ export default function ChattingSession() {
               </Button>
             </Box>
             <Box mb="30px" mt="10px">
-              <Text fontSize="13px" mb="5px" cursor={"pointer"}
+              <Box fontSize="13px" mb="5px" cursor={"pointer"}
                 onClick={() =>
                   toast({
                     position: 'top',
@@ -107,8 +106,8 @@ export default function ChattingSession() {
                     ),
                   }) && (navigator.clipboard.writeText(Url))
                 }
-              >Click here to copy link</Text>
-              <Text className={style.link_area} bg="#2b3954" cursor={"pointer"} overflow={"hidden"} fontSize="15px" py="8px" px="12px" borderRadius="40px" color="hsla(0,0%,100%,.7)" textOverflow="ellipsis" whiteSpace="nowrap" id="copylink"
+              >Click here to copy link</Box>
+              <Box className={style.link_area} bg="#2b3954" cursor={"pointer"} overflow={"hidden"} fontSize="15px" py="8px" px="12px" borderRadius="40px" color="hsla(0,0%,100%,.7)" textOverflow="ellipsis" whiteSpace="nowrap" id="copylink"
                 onClick={() =>
                   toast({
                     position: 'top',
@@ -118,7 +117,7 @@ export default function ChattingSession() {
                       </Box>
                     ),
                   }) && (navigator.clipboard.writeText(Url))
-                }>http://send.ilmux.com/?4325</Text>
+                }>http://send.ilmux.com/?4325</Box>
             </Box>
             <Box className={style.endsession}>
               <EndModal />
