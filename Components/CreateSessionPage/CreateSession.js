@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../../styles/Home.module.scss";
 import Link from 'next/link'
 import { useState } from "react";
-import { useEffect } from "react";
 import {
   Box,
   Flex,
@@ -24,12 +23,6 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { useRouter } from 'next/router'
-import { useCallback } from 'react';
-import { useNavigate } from "react-router-dom";
-
 
 
 export default function CreateSession() {
@@ -45,13 +38,8 @@ export default function CreateSession() {
   const changeLength = () => {
     let textLength = document.getElementById("text").value;
     var count = textLength.length + 1;
-
     document.getElementById("count").innerHTML = count;
-    console.log(count)
   }
-
-
-  console.log(textLength)
 
   const onSubmitHandler = (e) => {
     e.preventDefault()
@@ -105,7 +93,6 @@ export default function CreateSession() {
               type="submit"
               className={styles.submit_btn}
             >
-
               Create Session
             </Button>
 
