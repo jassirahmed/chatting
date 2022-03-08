@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../styles/Home.module.scss";
-import Link from 'next/link'
 import { useState } from "react";
 import {
   Box,
@@ -23,11 +22,15 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
+import ky from "ky"
+import { useRouter } from "next/router";
 
 
 export default function CreateSession() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addTextInput, setInputValue] = useState('');
+  const [joinSessionToken, setJoinSessionToken] = useState();
+  const router = useRouter();
 
   const changeHandler = (e) => {
     setInputValue({
@@ -63,6 +66,28 @@ export default function CreateSession() {
     }
     console.log(data)
   }
+
+  const joinSession = async () => {
+    if (joinSession) {
+      try {
+        var response = await ky.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}conversations/${joinSessionToken}`
+        );
+        response = await response.json();
+        console.log(response, "response");
+        if (response.success) {
+          router.push("/ChattingSession")
+        }
+      } catch (error) {
+        console.log(error, "error")
+      }
+    }
+  }
+
+  const handleChange = (e) => {
+    setJoinSessionToken(e.target.value)
+  }
+
 
 
   return (
@@ -116,14 +141,14 @@ export default function CreateSession() {
               <ModalHeader color='#fff' bg='#2b3954'>Join Session</ModalHeader>
               <ModalCloseButton color='#fff' border='none' boxShadow='none' />
               <ModalBody textAlign='center' fontSize='18px'>
-                <Input placeholder="Token ID" required type='number' maxLength='4' minLength='4' />
+                <Input placeholder="Token ID" required type='number' onChange={handleChange} maxLength='4' minLength='4' />
               </ModalBody>
 
               <ModalFooter color='#fff'>
                 <Button bg='#6c757d' mr={3} onClick={onClose}>
                   Cancel
                 </Button>
-                <Button bg='#28a745' >Join</Button>
+                <Button bg='#28a745' onClick={joinSession} >Join</Button>
               </ModalFooter>
             </ModalContent>
           </Modal>
