@@ -1,12 +1,8 @@
 import React from "react";
 import styles from "../../styles/Home.module.scss";
-<<<<<<< HEAD
 import Link from "next/link";
-=======
-import Link from 'next/link';
->>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useEffect } from "react";
 import {
   Box,
   Flex,
@@ -26,7 +22,6 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-<<<<<<< HEAD
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 
@@ -34,19 +29,6 @@ export default function CreateSession() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addTextInput, setInputValue] = useState("");
   const [data, setdata] = useState();
-=======
-} from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/react';
-import ky from "ky";
-
-
-export default function CreateSession() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [addTextInput, setInputValue] = useState('');
-  const [joinSessionToken, setJoinSessionToken] = useState();
-  const router = useRouter();
-
->>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
   const changeHandler = (e) => {
     setInputValue({
       [e.target]: e.target.value,
@@ -54,20 +36,13 @@ export default function CreateSession() {
   };
   const changeLength = () => {
     let textLength = document.getElementById("text").value;
-    console.log(textLength);
     var count = textLength.length + 1;
+
     document.getElementById("count").innerHTML = count;
-<<<<<<< HEAD
   };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-=======
-
-  }
-  const onSubmitHandler = (e) => {
-    e.preventDefault()
->>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
     var today = new Date();
     var date =
       today.getFullYear() + "" + (today.getMonth() + 1) + "" + today.getDate();
@@ -81,7 +56,6 @@ export default function CreateSession() {
       today.getMilliseconds();
     var dateTime = date + time;
     let uniqueID = dateTime + Math.floor(Math.random() * 1000);
-<<<<<<< HEAD
     data = {
       type: "createSession",
       message: addTextInput,
@@ -98,34 +72,6 @@ export default function CreateSession() {
     console.log("responseData", responseData);
   };
 
-=======
-    let data = {
-      type: 'ChattingSession',
-      message: addTextInput,
-      uniqueID: uniqueID,
-    }
-    console.log(data)
-  }
-  const joinSession = async () => {
-    if (joinSession) {
-      try {
-        var response = await ky.get(
-          `https://api.ilmux.com/tunnel/db/conversations/${joinSessionToken}`
-        );
-        response = response.json();
-        if (response.success) {
-          router.push("/ChattingSession")
-        }
-      } catch (error) {
-        console.log(error, "error")
-      }
-    }
-  }
-
-  const handleChange = (e) => {
-    setJoinSessionToken(e.target.value);
-  }
->>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
   return (
     <Box className={styles.createsessionpage}>
       <Flex pt="120px" className={styles.hero_sec}>
@@ -162,12 +108,8 @@ export default function CreateSession() {
             >
               Create Session
             </Button>
-<<<<<<< HEAD
             {/* </Link> */}
           </FormControl>
-=======
-          </FormControl >
->>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
         </Box>
         <Box w="40%" p={70} className={styles.btn_box} pt="0px">
           <Button
@@ -184,7 +126,6 @@ export default function CreateSession() {
           <Modal size="lg" isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-<<<<<<< HEAD
               <ModalHeader color="#fff" bg="#2b3954">
                 Join Session
               </ModalHeader>
@@ -204,18 +145,6 @@ export default function CreateSession() {
                   Cancel
                 </Button>
                 <Button bg="#28a745">Join</Button>
-=======
-              <ModalHeader color='#fff' bg='#2b3954'>Join Session</ModalHeader>
-              <ModalCloseButton color='#fff' border='none' boxShadow='none' />
-              <ModalBody textAlign='center' fontSize='18px'>
-                <Input onChange={handleChange} placeholder="Token ID" required type='number' maxLength='4' minLength='4' />
-              </ModalBody>
-              <ModalFooter color='#fff'>
-                <Button bg='#6c757d' mr={3} onClick={onClose}>
-                  Cancel
-                </Button>
-                <Button bg='#28a745' onClick={joinSession}>Join</Button>
->>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
               </ModalFooter>
             </ModalContent>
           </Modal>
