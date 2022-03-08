@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { RepeatIcon, AttachmentIcon, CopyIcon } from '@chakra-ui/icons'
 import "@fortawesome/fontawesome-free/css/all.css";
 import { Flex, Box, HStack, Stack, Switch, Spacer, Input, Button, FormControl, Text, Icon, IconButton } from '@chakra-ui/react'
-import style from "../styles/Home.module.scss"
+import style from "../styles/Home.module.scss";
 import { useToast } from '@chakra-ui/react';
 import { useState } from 'react';
 import EndModal from '../Components/Modal/EndModal';

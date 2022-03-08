@@ -317,12 +317,15 @@
     background-color: #3a3a3a;
     box-shadow: 1px 3px 7px 0 rgb(0 0 0 / 42%);
 
+    color: hsla(0, 0%, 100%, .72);
+
     .copybtn {
       background-color: #f2f2f2;
       color: #2b3954;
     }
 
-    p {
+    .token,
+    .token_num {
       color: hsla(0, 0%, 100%, .72);
     }
 

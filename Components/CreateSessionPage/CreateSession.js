@@ -23,12 +23,14 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react';
+import ky from "ky";
 
 
 export default function CreateSession() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addTextInput, setInputValue] = useState('');
+  const [joinSessionToken, setJoinSessionToken] = useState();
   const router = useRouter();
 
   const changeHandler = (e) => {
@@ -44,9 +46,7 @@ export default function CreateSession() {
     document.getElementById("count").innerHTML = count;
 
   }
-
   const onSubmitHandler = (e) => {
-
     e.preventDefault()
     var today = new Date();
     var date =
@@ -67,6 +67,25 @@ export default function CreateSession() {
       uniqueID: uniqueID,
     }
     console.log(data)
+  }
+  const joinSession = async () => {
+    if (joinSession) {
+      try {
+        var response = await ky.get(
+          `https://api.ilmux.com/tunnel/db/conversations/${joinSessionToken}`
+        );
+        response = response.json();
+        if (response.success) {
+          router.push("/ChattingSession")
+        }
+      } catch (error) {
+        console.log(error, "error")
+      }
+    }
+  }
+
+  const handleChange = (e) => {
+    setJoinSessionToken(e.target.value);
   }
   return (
     <Box className={styles.createsessionpage} >
@@ -98,7 +117,6 @@ export default function CreateSession() {
             >
               Create Session
             </Button>
-
           </FormControl >
         </Box>
         <Box w="40%" p={70} className={styles.btn_box} pt="0px">
@@ -119,14 +137,13 @@ export default function CreateSession() {
               <ModalHeader color='#fff' bg='#2b3954'>Join Session</ModalHeader>
               <ModalCloseButton color='#fff' border='none' boxShadow='none' />
               <ModalBody textAlign='center' fontSize='18px'>
-                <Input placeholder="Token ID" required type='number' maxLength='4' minLength='4' />
+                <Input onChange={handleChange} placeholder="Token ID" required type='number' maxLength='4' minLength='4' />
               </ModalBody>
-
               <ModalFooter color='#fff'>
                 <Button bg='#6c757d' mr={3} onClick={onClose}>
                   Cancel
                 </Button>
-                <Button bg='#28a745' >Join</Button>
+                <Button bg='#28a745' onClick={joinSession}>Join</Button>
               </ModalFooter>
             </ModalContent>
           </Modal>
