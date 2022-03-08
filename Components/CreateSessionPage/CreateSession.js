@@ -61,15 +61,6 @@ export default function CreateSession() {
       message: addTextInput,
       uniqueID: uniqueID,
     };
-    const response = await fetch("http://localhost:3000/db/saveData", {
-      method: "POST",
-      body: JSON.stringify({ data }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const responseData = await response.json();
-    console.log("responseData", responseData);
   };
 
   return (
