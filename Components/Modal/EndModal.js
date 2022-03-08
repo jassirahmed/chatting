@@ -13,16 +13,13 @@ import { useDisclosure } from '@chakra-ui/react'
 import { Button, Box } from '@chakra-ui/react'
 import styles from "../../styles/Home.module.scss"
 
-
-
 export default function EndModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <Box bg="transparent">
-            <Button py="5px" px="20px" onClick={onOpen} className={styles.endses} w={"150px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
+            <Button py="5px" px="20px" onClick={onOpen} className={styles.endses} w={"200px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
                 End Session
             </Button>
-
             <Modal size='lg' isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
@@ -31,7 +28,6 @@ export default function EndModal() {
                     <ModalBody textAlign='center' fontSize='18px'>
                         Ending Session will <b>delete all your data present</b> in this session &amp; <b>can't be restore</b>. Do you wnat to end this <b>session</b>
                     </ModalBody>
-
                     <ModalFooter color='#fff' borderTop='1px solid #999'>
                         <Button bg='#6c757d' mr={3} onClick={onClose}>
                             Cancel

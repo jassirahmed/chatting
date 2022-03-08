@@ -17,7 +17,7 @@ export default function LeaveModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <Box bg="transparent">
-            <Button display="none" py="5px" mt={5} onClick={onOpen} className={styles.endses} w={"150px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
+            <Button display="none" py="5px" mt={5} onClick={onOpen} className={styles.endses} w={"200px"} fontWeight="500" border={"2px solid"} color="#de4d5b" bg={"transparent"}  >
                 Leave Session
             </Button>
             <Modal size='lg' isOpen={isOpen} onClose={onClose}>

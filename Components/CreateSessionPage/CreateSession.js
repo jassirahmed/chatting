@@ -31,24 +31,21 @@ export default function CreateSession() {
   const [addTextInput, setInputValue] = useState('');
   const [joinSessionToken, setJoinSessionToken] = useState();
   const router = useRouter();
-
   const changeHandler = (e) => {
     setInputValue({
       [e.target]: e.target.value,
     })
-
   }
   const changeLength = () => {
     let textLength = document.getElementById("text").value;
     var count = textLength.length + 1;
     document.getElementById("count").innerHTML = count;
   }
-
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault()
-    var today = new Date();
+  var today = new Date();
     var date =
-      today.getFullYear() + '' + (today.getMonth() + 1) + '' + today.getDate();
+     today.getFullYear() + '' + (today.getMonth() + 1) + '' + today.getDate();
     var time =
       today.getHours() +
       '' +
@@ -64,9 +61,21 @@ export default function CreateSession() {
       message: addTextInput,
       uniqueID: uniqueID,
     }
+    if (onSubmitHandler) {
+      try {
+        var req = await ky.post(
+          'https://api.ilmux.com/tunnel/db/saveData', { json: {data} }).json();
+        // req = await req.json();
+        console.log(req, "req");
+        if (req.success) {
+          router.push("/ChattingSession")
+        }
+      } catch (error) {
+        console.log(error, "error");
+      }
+    }
     console.log(data)
   }
-
   const joinSession = async () => {
     if (joinSession) {
       try {
@@ -79,22 +88,21 @@ export default function CreateSession() {
           router.push("/ChattingSession")
         }
       } catch (error) {
-        console.log(error, "error")
+        console.log(error, "error");
       }
     }
   }
-
   const handleChange = (e) => {
     setJoinSessionToken(e.target.value)
   }
-
-
-
+  
   return (
     <Box className={styles.createsessionpage} >
       <Flex pt="120px" className={styles.hero_sec}>
         <Box w="60%" bg={"#fff"} className={styles.textbox} p="15px" >
-          <FormControl as="form" p="4" textAlign="right" onSubmit={onSubmitHandler} >
+          <FormControl as="form" p="4" textAlign="right"
+              onSubmit={onSubmitHandler}
+          >
             <Textarea
               id="text"
               required
@@ -120,7 +128,6 @@ export default function CreateSession() {
             >
               Create Session
             </Button>
-
           </FormControl >
         </Box>
         <Box w="40%" p={70} className={styles.btn_box} pt="0px">
@@ -143,7 +150,6 @@ export default function CreateSession() {
               <ModalBody textAlign='center' fontSize='18px'>
                 <Input placeholder="Token ID" required type='number' onChange={handleChange} maxLength='4' minLength='4' />
               </ModalBody>
-
               <ModalFooter color='#fff'>
                 <Button bg='#6c757d' mr={3} onClick={onClose}>
                   Cancel
