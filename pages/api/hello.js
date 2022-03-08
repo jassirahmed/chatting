@@ -1,7 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { comments } from "../../comments/comments"
 
-export default async function handler(req, res) {
-  body = await ky.post('http://localhost:3000/db/saveData', { json: { value: "hello world" } }).json();
-  console.log(body);
+export default function handler(req, res) {
 
+  res.status(200).json(
+    comments
+  )
 }

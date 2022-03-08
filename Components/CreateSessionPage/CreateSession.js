@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "../../styles/Home.module.scss";
+<<<<<<< HEAD
+=======
+import Link from 'next/link';
+>>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
 import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   Box,
   Flex,
@@ -21,9 +26,14 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
+<<<<<<< HEAD
 import { useDisclosure } from '@chakra-ui/react'
 import ky from "ky"
 import { useRouter } from "next/router";
+=======
+import { useDisclosure } from '@chakra-ui/react';
+import ky from "ky";
+>>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
 
 
 export default function CreateSession() {
@@ -40,10 +50,11 @@ export default function CreateSession() {
   }
   const changeLength = () => {
     let textLength = document.getElementById("text").value;
+    console.log(textLength);
     var count = textLength.length + 1;
     document.getElementById("count").innerHTML = count;
-  }
 
+  }
   const onSubmitHandler = (e) => {
     e.preventDefault()
     var today = new Date();
@@ -60,13 +71,29 @@ export default function CreateSession() {
     var dateTime = date + time;
     let uniqueID = dateTime + Math.floor(Math.random() * 1000);
     let data = {
-      type: 'createSession',
+      type: 'ChattingSession',
       message: addTextInput,
       uniqueID: uniqueID,
     }
     console.log(data)
   }
+  const joinSession = async () => {
+    if (joinSession) {
+      try {
+        var response = await ky.get(
+          `https://api.ilmux.com/tunnel/db/conversations/${joinSessionToken}`
+        );
+        response = response.json();
+        if (response.success) {
+          router.push("/ChattingSession")
+        }
+      } catch (error) {
+        console.log(error, "error")
+      }
+    }
+  }
 
+<<<<<<< HEAD
   const joinSession = async () => {
     if (joinSession) {
       try {
@@ -90,6 +117,11 @@ export default function CreateSession() {
 
 
 
+=======
+  const handleChange = (e) => {
+    setJoinSessionToken(e.target.value);
+  }
+>>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
   return (
     <Box className={styles.createsessionpage} >
       <Flex pt="120px" className={styles.hero_sec}>
@@ -120,7 +152,6 @@ export default function CreateSession() {
             >
               Create Session
             </Button>
-
           </FormControl >
         </Box>
         <Box w="40%" p={70} className={styles.btn_box} pt="0px">
@@ -141,14 +172,21 @@ export default function CreateSession() {
               <ModalHeader color='#fff' bg='#2b3954'>Join Session</ModalHeader>
               <ModalCloseButton color='#fff' border='none' boxShadow='none' />
               <ModalBody textAlign='center' fontSize='18px'>
+<<<<<<< HEAD
                 <Input placeholder="Token ID" required type='number' onChange={handleChange} maxLength='4' minLength='4' />
+=======
+                <Input onChange={handleChange} placeholder="Token ID" required type='number' maxLength='4' minLength='4' />
+>>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
               </ModalBody>
-
               <ModalFooter color='#fff'>
                 <Button bg='#6c757d' mr={3} onClick={onClose}>
                   Cancel
                 </Button>
+<<<<<<< HEAD
                 <Button bg='#28a745' onClick={joinSession} >Join</Button>
+=======
+                <Button bg='#28a745' onClick={joinSession}>Join</Button>
+>>>>>>> 6f1abb51c152e721c8ea437ce60d591c1ba50160
               </ModalFooter>
             </ModalContent>
           </Modal>

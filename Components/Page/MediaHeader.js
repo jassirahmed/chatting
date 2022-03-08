@@ -23,7 +23,7 @@ export default function Header() {
     var Url = `http://send.ilmux.com/${token}`;
     return (
         <Box as="header" bg={"#fff"} p="15px" className={style.Header}>
-            <Flex>
+            <Flex className={style.Flex}>
                 <Box className={style.share} w="70%">
                     <Button bg="#2b3954" onClick={onOpen} border="none" color="#fff" px="10px" py="5px"><i className="fa-solid fa-share-nodes"></i> Share this session</Button>
                     <Modal size='sm' isOpen={isOpen} onClose={onClose}>
@@ -103,7 +103,7 @@ export default function Header() {
                         </ModalContent>
                     </Modal>
                 </Box>
-                <Box className={style.end_leave} w="30%" textAlign="right">
+                <Box className={style.end_leave} w="" textAlign="right">
                     <EndModal />
                     <LeaveModal />
                 </Box>
