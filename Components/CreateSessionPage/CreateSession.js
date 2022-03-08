@@ -6,8 +6,6 @@ import {
   Flex,
   Textarea,
   FormControl,
-  FormHelperText,
-  FormErrorMessage,
   Text,
   Button,
   Input,
@@ -24,7 +22,6 @@ import {
 import { useDisclosure } from '@chakra-ui/react'
 import ky from "ky"
 import { useRouter } from "next/router";
-
 
 export default function CreateSession() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -64,7 +61,7 @@ export default function CreateSession() {
     if (onSubmitHandler) {
       try {
         var req = await ky.post(
-          'https://api.ilmux.com/tunnel/db/saveData', { json: {data} }).json();
+          'https://api.ilmux.com/tunnel/db/saveData', { json: {data}  }).json();
         // req = await req.json();
         console.log(req, "req");
         if (req.success) {
@@ -95,7 +92,6 @@ export default function CreateSession() {
   const handleChange = (e) => {
     setJoinSessionToken(e.target.value)
   }
-  
   return (
     <Box className={styles.createsessionpage} >
       <Flex pt="120px" className={styles.hero_sec}>
