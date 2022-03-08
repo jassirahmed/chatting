@@ -3,6 +3,7 @@ import styles from "../../styles/Home.module.scss";
 import Link from "next/link";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useState } from "react";
 import {
   Box,
   Flex,
@@ -24,6 +25,10 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
+} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
+import ky from "ky"
+import { useRouter } from "next/router";
 
 export default function CreateSession() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -37,12 +42,13 @@ export default function CreateSession() {
   const changeLength = () => {
     let textLength = document.getElementById("text").value;
     var count = textLength.length + 1;
-
     document.getElementById("count").innerHTML = count;
   };
-
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+  }
+  const onSubmitHandler = (e) => {
+    e.preventDefault()
     var today = new Date();
     var date =
       today.getFullYear() + "" + (today.getMonth() + 1) + "" + today.getDate();
@@ -62,7 +68,33 @@ export default function CreateSession() {
       uniqueID: uniqueID,
     };
   };
+    let data = {
+      type: 'createSession',
+      message: addTextInput,
+      uniqueID: uniqueID,
+    }
+    console.log(data)
+  }
 
+  const joinSession = async () => {
+    if (joinSession) {
+      try {
+        var response = await ky.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}conversations/${joinSessionToken}`
+        );
+        response = await response.json();
+        console.log(response, "response");
+        if (response.success) {
+          router.push("/ChattingSession")
+        }
+      } catch (error) {
+        console.log(error, "error")
+      }
+    }
+  }
+  const handleChange = (e) => {
+    setJoinSessionToken(e.target.value)
+  }
   return (
     <Box className={styles.createsessionpage}>
       <Flex pt="120px" className={styles.hero_sec}>
@@ -101,6 +133,7 @@ export default function CreateSession() {
             </Button>
             {/* </Link> */}
           </FormControl>
+          </FormControl >
         </Box>
         <Box w="40%" p={70} className={styles.btn_box} pt="0px">
           <Button
@@ -130,12 +163,22 @@ export default function CreateSession() {
                   minLength="4"
                 />
               </ModalBody>
-
               <ModalFooter color="#fff">
                 <Button bg="#6c757d" mr={3} onClick={onClose}>
                   Cancel
                 </Button>
                 <Button bg="#28a745">Join</Button>
+              <ModalHeader color='#fff' bg='#2b3954'>Join Session</ModalHeader>
+              <ModalCloseButton color='#fff' border='none' boxShadow='none' />
+              <ModalBody textAlign='center' fontSize='18px'>
+                <Input placeholder="Token ID" required type='number' onChange={handleChange} maxLength='4' minLength='4' />
+              </ModalBody>
+
+              <ModalFooter color='#fff'>
+                <Button bg='#6c757d' mr={3} onClick={onClose}>
+                  Cancel
+                </Button>
+                <Button bg='#28a745' onClick={joinSession} >Join</Button>
               </ModalFooter>
             </ModalContent>
           </Modal>

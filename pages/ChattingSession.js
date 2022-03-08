@@ -22,8 +22,6 @@ export default function ChattingSession() {
   const checkedText = <Box id='none' className={style.mode}>Chat Mode Is On <i className="fa fa-circle Blink" color="#3cad50"></i></Box>;
   const unheckedText = <Box id='block' color={"#929292"}>Enable Chat Mode</Box>;
   const sessionContainer = dark ? `${style["dark_row_2"]} ${style.white_Row}` : style.white_Row;
-
-
   const handleChange = () => {
     setIsChecked(!isChecked);
   }
