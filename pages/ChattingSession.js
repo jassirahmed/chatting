@@ -9,13 +9,14 @@ import { useState } from 'react';
 import EndModal from '../Components/Modal/EndModal';
 import LeaveModal from '../Components/Modal/LeaveModal';
 import Header from '../Components/Page/MediaHeader';
+import CreateSession from '../Components/CreateSessionPage/CreateSession';
 
 
 
 export default function ChattingSession() {
   const [isChecked, setIsChecked] = useState(false);
   const [dark, setDark] = useState(false);
-  const toast = useToast()
+  const toast = useToast();
   var token = '1234'
   var Url = `http://send.ilmux.com/${token}`;
   const checkedText = <Box id='none' className={style.mode}>Chat Mode Is On <i className="fa fa-circle Blink" color="#3cad50"></i></Box>;
@@ -46,6 +47,7 @@ export default function ChattingSession() {
             </HStack>
           </Flex>
           <Box className={style.textBox}>
+            {/* <CreateSession items={data.message} /> */}
           </Box>
           <Flex bg="#2b3954" className={style.msg_input} alignItems={"center"} p={2}>
             <Button className={style.msg_btn_icon} fontSize="20px" borderRadius={0} h="48px"><Box as="b"><AttachmentIcon /></Box></Button>

@@ -15,6 +15,7 @@
 
 .dark_row {
   background-color: rgba(29, 29, 29, .98);
+
 }
 
 .createsessionpage {
@@ -141,8 +142,6 @@
         .submit_btn:hover {
           background-color: #f2f2f2 !important;
         }
-
-
       }
 
       .join_btn {
@@ -252,6 +251,36 @@
 .dark_row_2 {
   background-color: rgba(29, 29, 29, .98);
 
+  .left_container {
+    background-color: #3a3a3a;
+
+    .rotateIcon {
+      background-color: hsla(0, 0%, 100%, .72);
+      color: #2d2929;
+    }
+
+    .textBox {
+      background-color: #212121;
+    }
+
+    .msg_input {
+      background-color: hsla(0, 0%, 100%, .72);
+
+      .msg_btn_icon {
+        background-color: #1d1d1d;
+        color: hsla(0, 0%, 76.5%, .79);
+      }
+
+      .msg_text_input {
+        background-color: #1d1d1d;
+      }
+
+      .message_sentbtn {
+        color: #2d2929;
+      }
+    }
+  }
+
   .sessionHead {
     background-color: #3a3a3a;
 
@@ -304,7 +333,25 @@
   }
 }
 
+@media only screen and (max-width:900px) {
+  .token_preview {
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 800px) {
+  .Header {
+    .Flex {
+      position: relative;
+
+      .end_leave {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+
   .hero_sec {
     display: block !important;
 
@@ -405,5 +452,19 @@
 
   .dark_row_2 {
     background-color: black;
+  }
+}
+
+@media only screen and (max-width:500px) {
+  .Header {
+    .Flex {
+      position: relative;
+
+      .end_leave {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
   }
 }

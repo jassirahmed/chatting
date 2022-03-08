@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../../styles/Home.module.scss";
-import Link from 'next/link'
+import Link from 'next/link';
 import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   Box,
   Flex,
@@ -28,6 +29,7 @@ import { useDisclosure } from '@chakra-ui/react'
 export default function CreateSession() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addTextInput, setInputValue] = useState('');
+  const router = useRouter();
 
   const changeHandler = (e) => {
     setInputValue({
@@ -37,11 +39,14 @@ export default function CreateSession() {
   }
   const changeLength = () => {
     let textLength = document.getElementById("text").value;
+    console.log(textLength);
     var count = textLength.length + 1;
     document.getElementById("count").innerHTML = count;
+
   }
 
   const onSubmitHandler = (e) => {
+
     e.preventDefault()
     var today = new Date();
     var date =
@@ -57,14 +62,12 @@ export default function CreateSession() {
     var dateTime = date + time;
     let uniqueID = dateTime + Math.floor(Math.random() * 1000);
     let data = {
-      type: 'createSession',
+      type: 'ChattingSession',
       message: addTextInput,
       uniqueID: uniqueID,
     }
     console.log(data)
   }
-
-
   return (
     <Box className={styles.createsessionpage} >
       <Flex pt="120px" className={styles.hero_sec}>
